@@ -6,16 +6,18 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane fx:id="cellGrid" alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<GridPane  minHeight="800" minWidth="600" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <rowConstraints>
+      <RowConstraints minHeight="500" prefHeight="500" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" />
+      <RowConstraints />
+   </rowConstraints>
    <children>
-      <AnchorPane fx:id="cellPane" prefHeight="200.0" prefWidth="200.0" />
+      <AnchorPane fx:id="cellPane" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="0" />
       <Button mnemonicParsing="false" onAction="#startSim" text="Start Sim" GridPane.rowIndex="1" />
    </children>
    <columnConstraints>
       <ColumnConstraints />
+      <ColumnConstraints />
    </columnConstraints>
-   <rowConstraints>
-      <RowConstraints />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" />
-   </rowConstraints>
 </GridPane>

@@ -15,13 +15,17 @@ public class Controller {
     private Game game;
 
     @FXML
-    AnchorPane cellPane;
+    private AnchorPane cellPane;
 
     public Controller() {
 
 
 
         game = new Game();
+
+    }
+
+    public void startSim() {
         for (int i = 0; i < gridSize; i++) {
             for (int j = 0; j < gridSize; j++) {
 
@@ -39,10 +43,11 @@ public class Controller {
             }
 
         }
+
+
     }
 
-    public void startSim() {
-
+    public void update(){
 
     }
 
