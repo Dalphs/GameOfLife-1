@@ -1,5 +1,6 @@
 package sample;
 
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
@@ -14,8 +15,8 @@ import java.util.TimerTask;
 public class Controller {
 
 
-    private int size = 5;
-    private int gridSize = 100;
+    private int size = 15;
+    private int gridSize = 50;
 
     private Rectangle[][] grid;
 
@@ -61,7 +62,7 @@ public class Controller {
         int gridY = (int) (y / size);
 
         game.getBoard()[gridX][gridY].setAlive(!game.getBoard()[gridX][gridY].isAlive());
-        grid[gridX][gridY].fillProperty().setValue(fill(gridX,gridY));
+        grid[gridX][gridY].fillProperty().setValue(fill(gridX, gridY));
     }
 
 
@@ -94,20 +95,21 @@ public class Controller {
             for (int j = 0; j < game.getBoard()[0].length; j++) {
 
                 int neighbors = 0;
-                try {
-                    for (int m = -1; m < 2; m++) {
-                        for (int n = -1; n < 2; n++) {
 
-                            if (game.getBoard()[i + m][j + n].isAlive()) {
-                                neighbors++;
+                for (int m = -1; m < 2; m++) {
+                    for (int n = -1; n < 2; n++) {
+
+                        if ((m + i >= 0 && n + j >= 0) && (m+i<gridSize && n+j <gridSize)) {
+
+                            if (m != 0 && n != 0) {
+                                if (game.getBoard()[i + m][j + n].isAlive()) {
+                                    neighbors++;    //TODO update of neighbors doesn't reflect the real number of neighbors
+                                }
                             }
 
                         }
                     }
-                } catch (ArrayIndexOutOfBoundsException ex) {
-                    continue;
                 }
-
 
                 game.getBoard()[i][j].setNeighbors(neighbors);
 
@@ -141,5 +143,18 @@ public class Controller {
         cellPane.getChildren().removeAll();
 
         initialize();
+    }
+
+    public void clearSim(ActionEvent actionEvent) {
+
+        for (int i = 0; i < grid.length; i++) {
+
+            for (int j = 0; j < grid[0].length; j++) {
+
+                game.getBoard()[i][j].setAlive(false);
+                grid[i][j].fillProperty().setValue(fill(i, j));
+
+            }
+        }
     }
 }

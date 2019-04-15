@@ -7,23 +7,27 @@ public class Cell {
 
     public Cell(double random) {
 
-        if(random>=0.51){
-            alive=true;
-        } else{
-            alive=false;
+        if (random >= 0.51) {
+            alive = true;
+        } else {
+            alive = false;
         }
     }
 
 
     public void update() {
 
-        if (neighbors == 3 && !alive) {
-            alive = true;
-        } else if (neighbors <= 4 && alive) {
+        if (neighbors < 2 && alive) {
             alive = false;
-        } else if (neighbors >=2 & alive){
+        } else if(neighbors == 3 && !alive){
+            alive = true;
+        } else if (neighbors > 3 && alive) {
             alive = false;
         }
+
+
+
+
 
     }
 
