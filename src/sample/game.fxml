@@ -8,19 +8,21 @@
 
 <GridPane minHeight="1000" minWidth="1000" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <rowConstraints>
+      <RowConstraints minHeight="20" prefHeight="20" />
       <RowConstraints minHeight="750" prefHeight="750" />
       <RowConstraints minHeight="10.0" prefHeight="30.0" />
       <RowConstraints />
       <RowConstraints minHeight="10.0" prefHeight="30.0" />
    </rowConstraints>
    <children>
-      <AnchorPane fx:id="cellPane" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="0" />
-      <Button mnemonicParsing="false" onAction="#startSim" text="Start Sim" GridPane.rowIndex="1" />
-      <Button mnemonicParsing="false" onAction="#stopSim" text="Stop Sim" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
-      <Button mnemonicParsing="false" onAction="#newSim" text="New Sim" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-      <Button mnemonicParsing="false" onAction="#clearSim" text="Clear Sim" GridPane.rowIndex="2" />
+      <AnchorPane fx:id="cellPane" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <Button mnemonicParsing="false" onAction="#startSim" text="Start Sim" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      <Button mnemonicParsing="false" onAction="#stopSim" text="Stop Sim" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
+      <Button mnemonicParsing="false" onAction="#newSim" text="New Sim" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+      <Button mnemonicParsing="false" onAction="#clearSim" text="Clear Sim" GridPane.columnIndex="1" GridPane.rowIndex="4" />
    </children>
    <columnConstraints>
+      <ColumnConstraints minWidth="10.0" prefWidth="100.0" />
       <ColumnConstraints />
       <ColumnConstraints />
    </columnConstraints>

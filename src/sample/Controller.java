@@ -90,34 +90,13 @@ public class Controller {
 
     public void update() {
 
-        for (int i = 0; i < game.getBoard().length; i++) {
-
-            for (int j = 0; j < game.getBoard()[0].length; j++) {
-
-                int neighbors = 0;
-
-                for (int m = -1; m < 2; m++) {
-                    for (int n = -1; n < 2; n++) {
-
-                        if ((m + i >= 0 && n + j >= 0) && (m+i<gridSize && n+j <gridSize)) {
-
-                            if (m != 0 && n != 0) {
-                                if (game.getBoard()[i + m][j + n].isAlive()) {
-                                    neighbors++;    //TODO update of neighbors doesn't reflect the real number of neighbors
-                                }
-                            }
-
-                        }
-                    }
-                }
-
-                game.getBoard()[i][j].setNeighbors(neighbors);
-
-            }
-
-        }
+        updateNeighbors();
+        updateAlive();
 
 
+    }
+
+    private void updateAlive() {
         for (int i = 0; i < grid.length; i++) {
 
             for (int j = 0; j < grid[0].length; j++) {
@@ -128,7 +107,59 @@ public class Controller {
 
             }
         }
+    }
 
+    private void updateNeighbors() {
+        for (int i = 0; i < game.getBoard().length; i++) {
+
+            for (int j = 0; j < game.getBoard()[0].length; j++) {
+
+                int neighbors = 0;
+                if (i != 0) {
+                    if (j != 0) {
+                        if (game.getBoard()[i - 1][j - 1].isAlive()) {
+                            neighbors++;
+                        }
+                    }
+                    if (game.getBoard()[i - 1][j].isAlive()) {
+                        neighbors++;
+                    }
+                    if (j < gridSize - 1) {
+                        if (game.getBoard()[i - 1][j + 1].isAlive()) {
+                            neighbors++;
+                        }
+                    }
+                }
+                if (j != 0) {
+                    if (game.getBoard()[i][j - 1].isAlive()) {
+                        neighbors++;
+                    }
+                }
+                if (j < gridSize - 1) {
+                    if (game.getBoard()[i][j + 1].isAlive()) {
+                        neighbors++;
+                    }
+                }
+                if (i < gridSize - 1) {
+                    if (j != 0) {
+                        if (game.getBoard()[i + 1][j - 1].isAlive()) {
+                            neighbors++;
+                        }
+                    }
+                    if (game.getBoard()[i + 1][j].isAlive()) {
+                        neighbors++;
+                    }
+                    if (j < gridSize - 1) {
+                        if (game.getBoard()[i + 1][j + 1].isAlive()) {
+                            neighbors++;
+                        }
+                    }
+                }
+                game.getBoard()[i][j].setNeighbors(neighbors);
+
+            }
+
+        }
     }
 
 
@@ -157,4 +188,6 @@ public class Controller {
             }
         }
     }
+
+
 }
