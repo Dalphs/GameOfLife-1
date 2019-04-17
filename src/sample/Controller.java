@@ -9,6 +9,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 
 import java.util.Timer;
@@ -46,6 +47,15 @@ public class Controller {
 
         setupButtons( gridPane, game, grid, anchor);
 
+        Line line = new Line();
+        line.setStroke(Color.BLACK);
+        line.setStrokeWidth(2);
+        line.setStartX(anchor.getLayoutX()+(gridSize*size));
+        line.setStartY(anchor.getLayoutY());
+        line.setEndX(anchor.getLayoutX()+(gridSize*size));
+        line.setEndY(anchor.getLayoutY()+(gridSize*size));
+        anchor.getChildren().add(line);
+
 
         numOfSims++;
 
@@ -74,7 +84,7 @@ public class Controller {
         GridPane.setColumnIndex(startSimBTN, numOfSims);
         GridPane.setHalignment(startSimBTN, HPos.LEFT);
         gridPane.getChildren().add(startSimBTN);
-
+        /*  a reset button but the onAction method resetSim doesn't work
         Button resetSimBTN = new Button();
         resetSimBTN.setText("Reset Sim");
         resetSimBTN.setOnAction(new EventHandler<ActionEvent>() {
@@ -87,7 +97,7 @@ public class Controller {
         GridPane.setColumnIndex(resetSimBTN, numOfSims);
         GridPane.setHalignment(resetSimBTN, HPos.CENTER);
         gridPane.getChildren().add(resetSimBTN);
-
+        */
         Button clearSimBTN = new Button();
         clearSimBTN.setText("Clear Sim");
         clearSimBTN.setOnAction(new EventHandler<ActionEvent>() {
@@ -245,12 +255,6 @@ public class Controller {
 
     }
 
-    public void newSim(AnchorPane cellPane) {
-
-        cellPane.getChildren().removeAll();
-
-        initialize();
-    }
 
     public void clearSim(Game game, Rectangle[][] grid) {
 

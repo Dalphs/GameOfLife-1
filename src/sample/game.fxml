@@ -4,8 +4,10 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.control.ScrollPane?>
 
-<GridPane fx:id="gridPane" minHeight="1000" minWidth="1000" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<ScrollPane xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller" >
+<GridPane fx:id="gridPane" minHeight="1000" minWidth="1000" >
     <rowConstraints>
         <RowConstraints />
         <RowConstraints />
@@ -24,3 +26,4 @@
       <Button fx:id="newSimBTN" mnemonicParsing="false" onAction="#newSim" text="New Sim" />
    </children>
 </GridPane>
+</ScrollPane>
